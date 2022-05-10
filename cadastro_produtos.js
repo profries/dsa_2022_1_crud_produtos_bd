@@ -9,6 +9,7 @@ const conexao = {
     database: 'crud_produtos'
 };
 
+//Iniciando o inserirProduto
 function inserir(produto){
 }
 
