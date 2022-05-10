@@ -1,0 +1,22 @@
+{
+  "name": "crud_produtos_bd",
+  "version": "1.0.0",
+  "description": "Realiza o CRUD de produtos utilizando Postgres",
+  "main": "main.js",
+  "scripts": {
+    "start-dev": "nodemon main.js",
+    "start": "node main.js"
+  },
+  "keywords": [
+    "CRUD",
+    "produtos"
+  ],
+  "author": "Luis Henrique Ries",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
