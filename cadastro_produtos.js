@@ -10,7 +10,19 @@ const conexao = {
 };
 
 //Iniciando o inserirProduto
-function inserir(produto){
+function inserir(produto, callback) {
+    const cliente = new Client(conexao);
+    cliente.connect();
+
+    const sql = "INSERT INTO produtos(nome, preco) VALUES ($1, $2) RETURNING *";
+    const values = [produto.nome, produto.preco];
+
+    cliente.query(sql, values, 
+        function (err, res){
+            callback(err, res.rows[0]);
+            cliente.end();
+        })
+
 }
 
 

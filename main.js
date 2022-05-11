@@ -1,9 +1,19 @@
 const cadastroProdutos = require('./cadastro_produtos.js')
 
 //Main
-//cadastroProdutos.inserir({nome: "mesa", preco:450});
-//cadastroProdutos.inserir({nome: "cadeira", preco:180});
-//cadastroProdutos.inserir({nome: "roupeiro", preco:840});
+cadastroProdutos.inserir({nome: "sanduiche", preco:10},
+    function(err, produtoInserido) {
+        console.log("INSERINDO pastel...")
+        if(err) {
+            console.log("Sistema esta com problemas");
+            console.log(err);
+        }
+        else {
+            console.log("produto inserido: ");
+            console.log(produtoInserido);
+        }
+    });
+
 cadastroProdutos.listar(
     function(err, produtos) {
         console.log("Listar: ");
