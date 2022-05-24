@@ -1,7 +1,7 @@
 const cadastroProdutos = require('./cadastro_produtos.js')
 
 //Main
-cadastroProdutos.inserir({nome: "sanduiche", preco:10},
+/*cadastroProdutos.inserir({nome: "sanduiche", preco:10},
     function(err, produtoInserido) {
         console.log("INSERINDO pastel...")
         if(err) {
@@ -12,7 +12,7 @@ cadastroProdutos.inserir({nome: "sanduiche", preco:10},
             console.log("produto inserido: ");
             console.log(produtoInserido);
         }
-    });
+    });*/
 
 cadastroProdutos.listar(
     function(err, produtos) {
@@ -23,11 +23,12 @@ cadastroProdutos.listar(
         }
         else {
             console.log(produtos);
+
         }
     }
 );
 
-cadastroProdutos.buscarPorId(2, 
+/*cadastroProdutos.buscarPorId(2, 
     function(erro, produto) {
         console.log("BuscarPorId(2): ");
         if(erro) {
@@ -37,7 +38,7 @@ cadastroProdutos.buscarPorId(2,
             console.log(produto);
         }
 
-});
+});*/
 
 cadastroProdutos.buscarPorId(4, 
     function(erro, produto) {
@@ -50,13 +51,27 @@ cadastroProdutos.buscarPorId(4,
         }
 });
 
-//console.log("Atualizar: ");
-//console.log(cadastroProdutos.atualizar(
-//    3, {id:3, nome: "roupeiro", preco:850}
-//));
+cadastroProdutos.deletar(7, function(erro, produto) {
+    console.log("Produto deletado (7): ");
+    if(erro) {
+        console.log("Erro: "+erro);
+    }
+    else {
+        console.log(produto);
+    }
+});
 
-//console.log("Deletar: ");
-//console.log(cadastroProdutos.deletar(1));
+/*cadastroProdutos.atualizar(1, {nome: "torrada", preco: 10.5}, 
+    function(erro, produto) {
+        console.log("Atualizar Produto(1): ");
+        if(erro) {
+            console.log("Erro: "+erro);
+        }
+        else {
+            console.log(produto);
+        }
+});*/
 
-//console.log("Listar: ");
-//console.log(cadastroProdutos.listar());
+
+
+

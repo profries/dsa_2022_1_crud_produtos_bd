@@ -74,10 +74,53 @@ function buscarPorId(id, callback){
 }
 
 
-function atualizar(id,produtoAlterado) {
+function atualizar(id,produto, callback) {
+    const cliente = new Client(conexao);
+    cliente.connect();
+
+    const sql = "UPDATE produtos SET nome=$1, preco=$2 WHERE id=$3 RETURNING *"
+    const values = [produto.nome, produto.preco, id];
+
+    cliente.query(sql, values, function(err, res) {
+        if(err) {
+            callback(err.message, undefined);                
+        }
+        else if (res.rows && res.rows.length > 0) {
+            let produto = res.rows[0];
+            callback(undefined, produto);
+        }
+        else {
+            const error = "Produto nao encontrado";
+            callback(error, undefined);
+        }
+
+        cliente.end();        
+    })
 }
 
-function deletar(id) {
+function deletar(id, callback) {
+    const cliente = new Client(conexao);
+    cliente.connect();
+
+    const sql = "DELETE FROM produtos WHERE id=$1 RETURNING *"
+    const values = [id];
+
+    cliente.query(sql, values, function(err, res) {
+        if(err) {
+            callback(err.message, undefined);                
+        }
+        else if (res.rows && res.rows.length > 0) {
+            let produto = res.rows[0];
+            callback(undefined, produto);
+        }
+        else {
+            const error = "Produto nao encontrado";
+            callback(error, undefined);
+        }
+
+        cliente.end();        
+    })
+
 }
 
 module.exports = {
